@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+
 // create an oject within a string, include a name and level of completion
 
 var groceries = [{
@@ -16,6 +19,9 @@ var groceries = [{
         "complete": false
     } ];
     
+// use jquery to produce HTML
+
+$("div.container").html("<h1>Groceries</h1>");
     
 // create a loop that prints out the above string
 
@@ -29,18 +35,20 @@ for (var i=0; i < groceries.length; i ++) {
 
 // create a function defining printGroceries
 
-document.write("<ul>");
-function printGroceries (items) {
-    if(items.complete === true) {
-        document.write("<li class='complete'>" + items.name + "</li>");
-    } else if(items.complete === false) {
-        document.write("<li>" + items.name + "</li>");
-    } 
-    
-    if(typeof items.name === "undefined") {
-        throw "Aren't you forgetting something?"
-    } else if (typeof items.complete === "undefined") {
-        throw "Did you get everything you need?"
-    }
-};
-document.write("</ul>");
+$("ul").html(function() {
+    function printGroceries (items) {
+        if(items.complete === true) {
+            $("li.complete").html(items.name);
+        } else if(items.complete === false) {
+            $("li").html(items.name);
+        } 
+        
+        if(typeof items.name === "undefined") {
+            throw "Aren't you forgetting something?"
+        } else if (typeof items.complete === "undefined") {
+            throw "Did you get everything you need?"
+        }
+    };
+});
+
+});

@@ -6,3 +6,5 @@ li:nth-child(odd) { background: #8d0202; }
 
 .complete { background: #398e01; }
 li.complete:nth-child(odd) { background: #245a00; }
+
+.container { width: 50%; display: block; margin: 0 auto; }
