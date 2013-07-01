@@ -1,5 +1,8 @@
 body { font-family: Helvetica, Arial, Sans-serif; font-size: 14px; color: #4e4e4e; }
 h1 { font-size: 1.5em; }
 
-ul li { list-style: none; padding: .5em; }
-ul li:nth-child(odd) { color: #fff; background-color:#8b0000; }
+li { color: #fff; list-style: none; padding: .5em; background: #b20101; }
+li:nth-child(odd) { background: #8d0202; }
+
+.complete { background: #398e01; }
+li.complete:nth-child(odd) { background: #245a00; }
