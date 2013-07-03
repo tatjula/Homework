@@ -1,10 +1,9 @@
-body { font-family: Helvetica, Arial, Sans-serif; font-size: 14px; color: #4e4e4e; }
-h1 { font-size: 1.5em; }
-
+body { font-family: Helvetica, Arial, Sans-serif; font-size: 14px; line-height: 24px; color: #4e4e4e; }
+h1 { font-size: 1.5em; font-weight: bold; margin: 20px 0 10px 0; }
 li { color: #fff; list-style: none; padding: .5em; background: #b20101; }
 li:nth-child(odd) { background: #8d0202; }
 
 .complete { background: #398e01; }
 li.complete:nth-child(odd) { background: #245a00; }
 
-.container { width: 50%; display: block; margin: 0 auto; }
+.container { width: 50%; display: block; margin: 0 auto; padding: .5em; }
