@@ -12,23 +12,21 @@ $(document).ready(function() {
         this.complete = true;
         this.speak = function() {
             return this.name + "" + this.date;
-        };
-
-// create a loop that prints out the above object
-
-        for (var i = 0; i < Groceries.length; i++) {
-            try {
-                html += printGroceries(Groceries[i]);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
 // use the object above to create new items
 
-        var milk = new Groceries("milk", false, true);
-        var papertowels = new Groceries("paper towels", false, true);
-        var monkeys = new Groceries("monkeys", new Date(2013, 07, 10), false);
+        var new Groceries = [("milk", false, true), ("paper towels", false, true), ("monkeys", new Date(2013, 07, 10), false)];           
+            
+// create a loop that prints out the above object
+
+            for (var i = 0; i < Groceries.length; i++) {
+                try {
+                    html += printGroceries(Groceries[i]);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            
+        };
 
 // print out the stuff so it displays in HTML
 
@@ -64,5 +62,5 @@ $(document).ready(function() {
                 console.log("You have a week to pick up these items");
             }
         }
-    });
-}
+    }
+});
