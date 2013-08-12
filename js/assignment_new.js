@@ -2,12 +2,36 @@ $(document).ready(function() {
 
 // CREATE A BASIC TO-DO LIST WITH AN ARRAY
 
-var groceries = ["eggs", "milk", "bacon", "paper towles", "monkies"];
+var groceries = [{
+        "name" : "eggs",
+        "complete" : true,
+        "dueDate": Date(2013, 7, 25)
+    }, {
+        "name" : "milk",
+        "complete" : true,
+        "dueDate": Date(2013, 7, 25)
+    }, {
+        "name" : "bacon",
+        "complete" : true,
+        "dueDate": Date(2013, 7, 25)
+    }, {
+        "name" : "paper towles",
+        "complete" : true,
+        "dueDate": Date(2013, 7, 25)
+    }, {
+        "name" : "monkies",
+        "complete" : false,
+        "dueDate": Date(2015, 7, 25)
+    }];
 
 var container = "<ul>";
 
 for (var i = 0; i < groceries.length; i++) {
-    container += "<li>" +  groceries[i] + "</li>";
+    try {
+        container += listGroceries(groceries[i]);
+    } catch (e) {
+        container =+ "There is a problem!";
+    }
 }
 
 container += "</ul>";
@@ -16,12 +40,20 @@ container += "</ul>";
 
 $("div.container").html(container);
 
+function listGroceries (items) {
+    if(typeof items.name === "undefined") {
+        throw "Did you forget something?";
+    } else if (typeof items.complete === "undefined") {
+        throw "Did you get this yet?";
+    }
+    
+    if(items.complete) {
+        return "<li class='complete'>" + items.name + "</li>";
+    } else {
+        return "<li>" + items.name + "</li>"; 
+    }
+}
 
-/*$("div.container").html(function() {
-  var listItems = "<li>" + $("groceries[i]") + "<li>";
-  return $( "ul" ).append( $( "li" ) + listItems);
-});*/
-
-console.log(container);
+$(".complete").remove();
 
 });

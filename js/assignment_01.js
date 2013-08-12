@@ -1,66 +1,61 @@
+var listApp;
+//NOT WORKING
 $(document).ready(function() {
+    // create an oject within a string, include a name and level of completion
+    var Groceries = function (name, finish, dueDate){
+        this.name = name || "newGroceries";
+        this.finish = true;
+        this.dueDate = dueDate || "newDate";
+    };
 
-// a list of items that print to HTML
-// use jquery to produce HTML
-
-    var html = "<h1>Groceries</h1>";
-    html += "<ul>";
-
-    function Groceries(name, dueDate, complete) {
-        this.name = name || "eggs";
-        this.dueDate = dueDate || new Date(2013, 07, 05);
-        this.complete = true;
-        this.speak = function() {
-            return this.name + "" + this.date;
-// use the object above to create new items
-
-        var new Groceries = [("milk", false, true), ("paper towels", false, true), ("monkeys", new Date(2013, 07, 10), false)];           
-            
-// create a loop that prints out the above object
-
-            for (var i = 0; i < Groceries.length; i++) {
-                try {
-                    html += printGroceries(Groceries[i]);
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            
-        };
-
-// print out the stuff so it displays in HTML
-
-        html += "</ul>";
-        $('.container').html(html);
-        $(".complete").remove();
-
-// create a function defining printGroceries
-
-        function printGroceries(items) {
+    // use jquery to produce HTML
+    
+    listApp = {
+        "groceries" : {
+        "list" : [],
+        },
+        "add" : function (name, finish, dueDate) {
+            this.Groceries.list.push(new Groceries(name, dueDate));  
+        },
+        "addGroceries" : function () {
+            this.add ("eggs", true, Date(2013, 7, 25));
+            this.add ("bread", true, Date(2013, 7, 25));
+            this.add ("milk", true, Date(2013, 7, 5));
+            this.add ("paper towels", true, Date(2013, 7, 15));
+            this.add ("monkeys", true, Date(2015, 1, 1));
+        },
+        "printTask" : function (items) {
             if (typeof items.name === "undefined") {
                 throw "Aren't you forgetting something?";
             } else if (typeof items.complete === "undefined") {
                 throw "Did you get everything you need?";
             }
-            if (items.complete) {
+            if (items.finish) {
                 return "<li class='complete'>" + items.name + "</li>";
-            } else if (items.complete === false) {
+            } else if (items.finish === false) {
                 return "<li>" + items.name + "</li>";
             }
+        },
+        "printAll" :function() {
+            var groceries = this.groceries;
+            var html = "<h1>Groceries</h1>";
+            html += "<ul>";
+            // create a loop that prints out the above string
+            for (var i = 0; i < groceries.length; i++) {
+                try {
+                    html += listApp.printTask(groceries.list[i]);
+                } catch (error) {
+                    //console.log(error);
+                }
         }
-
-// adding dates to the list
-
-        function weeklyEssentials() {
-            var nextWeek = new Date();
-            nextWeek.setDate(nextWeek.getDate() + 7);
-            var runningOut = new Date();
-            runningOut.setDate(runningOut.getDate() < 7);
-            if (nextWeek.getTime() > runningOut.getTime()) {
-                console.log("Get to the store now! You don't have time to wait.");
-            } else {
-                console.log("You have a week to pick up these items");
-            }
-        }
+            html += "</ul>";
+            $('.container').html(html);
+            $(".complete").remove();
+        
     }
+};
+
+listApp.printAll();
+
 });
+
